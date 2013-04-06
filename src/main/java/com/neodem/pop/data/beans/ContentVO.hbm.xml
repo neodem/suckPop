@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.neodem.pop.data.beans.ContentVO" table="Content">
+        <id name="id" column="ContentID">
+            <generator class="native"/>
+        </id>
+        <property name="body" type="text"/>
+ 		<property name="contentType"/>
+    </class>
+
+</hibernate-mapping>

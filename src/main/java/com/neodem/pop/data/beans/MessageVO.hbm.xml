@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.neodem.pop.data.beans">
+
+    <class name="MessageVO" table="message">
+        <id name="id" column="MessageID">
+            <generator class="native"/>
+        </id>
+        <property name="sentDate" type="timestamp" column="SentDate"/>
+        <property name="subject"/>
+ 		<property name="fromName"/>
+ 		<property name="fromEmailAddress"/>
+
+        <list name="tos" cascade="save-update,persist">
+            <key column="MessageID" not-null="true"/>
+            <list-index column="addressIndex"/>
+            <many-to-many column="AddressID" class="AddressVO"/>
+        </list>
+        
+        <list name="contents" cascade="save-update,persist">
+            <key column="MessageID" not-null="true"/>
+            <list-index column="contentIndex"/>
+            <many-to-many column="ContentID" class="ContentVO"/>
+        </list>
+    </class>
+
+</hibernate-mapping>
